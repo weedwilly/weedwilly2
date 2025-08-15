@@ -1,14 +1,14 @@
-/* CSS變數定義 */
+/* 現代化變數定義 */
 :root {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --secondary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --accent-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-  --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-  --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  --hover-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  --neon-blue: #00d4ff;
+  --neon-purple: #9d4edd;
+  --neon-pink: #ff006e;
+  --neon-green: #8ecae6;
+  --dark-bg: #0a0a0a;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-/* 基礎重置 */
 * {
   margin: 0;
   padding: 0;
@@ -17,23 +17,14 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0a0a;
+  color: #ffffff;
+  overflow-x: hidden;
   line-height: 1.6;
-  color: #333;
-  /* 科學感背景漸層 */
-  background: linear-gradient(-45deg, #667eea, #764ba2, #4facfe, #00f2fe);
-  background-size: 400% 400%;
-  animation: gradientShift 20s ease infinite;
-  min-height: 100vh;
+  position: relative;
 }
 
-/* 背景動畫 */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* 浮動粒子效果 */
+/* 史詩級動態背景 */
 body::before {
   content: '';
   position: fixed;
@@ -41,31 +32,60 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.3) 0%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(157, 78, 221, 0.3) 0%, transparent 70%),
+    radial-gradient(circle at 40% 80%, rgba(255, 0, 110, 0.3) 0%, transparent 70%),
+    radial-gradient(circle at 60% 20%, rgba(142, 202, 230, 0.3) 0%, transparent 70%);
+  animation: morphBackground 20s ease infinite;
+  z-index: -2;
+}
+
+@keyframes morphBackground {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  33% {
+    transform: scale(1.1) rotate(120deg);
+    filter: hue-rotate(120deg);
+  }
+  66% {
+    transform: scale(0.9) rotate(240deg);
+    filter: hue-rotate(240deg);
+  }
+}
+
+/* 網格背景效果 */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: 
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 2px, transparent 3px),
-    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 1px, transparent 2px),
-    radial-gradient(circle at 60% 20%, rgba(255,255,255,0.06) 1px, transparent 2px);
-  background-size: 100px 100px, 150px 150px, 200px 200px;
-  animation: floatParticles 30s linear infinite;
-  pointer-events: none;
-  z-index: 1;
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 30s linear infinite;
+  z-index: -1;
 }
 
-@keyframes floatParticles {
-  0% { transform: translateX(0) translateY(0); }
-  33% { transform: translateX(-30px) translateY(-30px); }
-  66% { transform: translateX(30px) translateY(-60px); }
-  100% { transform: translateX(0) translateY(0); }
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
 }
 
-/* Header 樣式 */
+/* Header 重新設計 */
 header {
-  position: relative;
-  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
   backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.15);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+  background: rgba(10, 10, 10, 0.8);
+  border-bottom: 1px solid var(--glass-border);
 }
 
 header nav {
@@ -73,21 +93,46 @@ header nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
+/* Logo 超炫發光效果 */
 header h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #fff 0%, #e8f4fd 100%);
+  font-size: 2rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  letter-spacing: -0.5px;
+  animation: gradientFlow 3s ease infinite;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  position: relative;
 }
 
+header h1::after {
+  content: 'BioPharmLab';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(10px);
+  opacity: 0.7;
+  z-index: -1;
+  animation: gradientFlow 3s ease infinite reverse;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 導航按鈕重新設計 */
 nav ul {
   display: flex;
   gap: 0.5rem;
@@ -96,103 +141,170 @@ nav ul {
 }
 
 nav ul li a {
-  color: rgba(255,255,255,0.9);
+  color: #ffffff;
   text-decoration: none;
-  padding: 0.7rem 1.2rem;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  position: relative;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+nav ul li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+nav ul li a:hover::before {
+  left: 100%;
 }
 
 nav ul li a:hover {
-  background: var(--secondary-gradient);
-  color: white;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
   transform: translateY(-2px);
-  box-shadow: var(--card-shadow);
 }
 
-/* 深色模式切換按鈕 */
+/* 深色模式按鈕超炫效果 */
 #darkToggle {
-  background: var(--primary-gradient);
+  background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
   border: none;
-  padding: 0.7rem;
+  padding: 1rem;
   border-radius: 50%;
   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
+  position: relative;
 }
 
 #darkToggle:hover {
-  transform: scale(1.1) rotate(15deg);
-  box-shadow: var(--hover-shadow);
+  transform: scale(1.2) rotate(180deg);
+  box-shadow: 0 0 40px rgba(157, 78, 221, 0.8);
 }
 
-/* Section 通用樣式 */
+/* Section 間距調整 */
 section {
-  padding: 4rem 2rem;
-  max-width: 1200px;
+  padding: 6rem 2rem 4rem;
+  max-width: 1400px;
   margin: 0 auto;
   position: relative;
-  z-index: 10;
 }
 
+/* 震撼的標題設計 */
 section h2 {
-  font-size: 2.5rem;
+  font-size: 4rem;
+  font-weight: 900;
   text-align: center;
-  margin-bottom: 2rem;
-  background: linear-gradient(135deg, #fff 0%, #e8f4fd 100%);
+  margin-bottom: 3rem;
+  background: linear-gradient(45deg, 
+    var(--neon-blue) 0%, 
+    var(--neon-purple) 25%, 
+    var(--neon-pink) 50%, 
+    var(--neon-green) 75%, 
+    var(--neon-blue) 100%);
+  background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  animation: rainbow 4s ease infinite;
+  text-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+  position: relative;
 }
 
-/* Home Section */
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+}
+
+@keyframes rainbow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Home Section 重新設計 */
 #home {
   text-align: center;
-  padding: 6rem 2rem;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  border-radius: 30px;
-  margin: 2rem auto;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: var(--card-shadow);
+  padding: 10rem 2rem 6rem;
+  position: relative;
 }
 
 #home h2 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #fff 0%, #e8f4fd 100%);
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(45deg, 
+    #ff006e 0%, 
+    #8338ec 25%, 
+    #3a86ff 50%, 
+    #06ffa5 75%, 
+    #ff006e 100%);
+  background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: megaRainbow 3s ease infinite;
+  filter: drop-shadow(0 0 30px rgba(255, 0, 110, 0.5));
+}
+
+@keyframes megaRainbow {
+  0%, 100% { 
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 30px rgba(255, 0, 110, 0.5));
+  }
+  25% { 
+    background-position: 25% 50%;
+    filter: drop-shadow(0 0 30px rgba(131, 56, 236, 0.5));
+  }
+  50% { 
+    background-position: 50% 50%;
+    filter: drop-shadow(0 0 30px rgba(58, 134, 255, 0.5));
+  }
+  75% { 
+    background-position: 75% 50%;
+    filter: drop-shadow(0 0 30px rgba(6, 255, 165, 0.5));
+  }
 }
 
 #home p {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
-  max-width: 600px;
+  margin-bottom: 3rem;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
+/* 超炫按鈕 */
 #home button {
-  background: var(--secondary-gradient);
+  background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple), var(--neon-blue));
+  background-size: 300% 300%;
   color: white;
   border: none;
-  padding: 1rem 2.5rem;
+  padding: 1.2rem 3rem;
   border-radius: 50px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4);
+  animation: buttonGlow 2s ease infinite alternate;
   position: relative;
   overflow: hidden;
 }
@@ -200,46 +312,54 @@ section h2 {
 #home button::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transition: all 0.6s ease;
-  transform: translate(-50%, -50%);
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
 }
 
 #home button:hover::before {
-  width: 300px;
-  height: 300px;
+  animation: shine 0.5s ease;
 }
 
 #home button:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--hover-shadow);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 50px rgba(255, 0, 110, 0.6);
+  animation: none;
 }
 
-/* Research Cards */
+@keyframes buttonGlow {
+  0% { box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4); }
+  100% { box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4); }
+}
+
+@keyframes shine {
+  0% { left: -50%; }
+  100% { left: 150%; }
+}
+
+/* 卡片重新設計 - 霓虹邊框 */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  margin: 2rem 0;
+  margin: 3rem 0;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  padding: 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  padding: 2.5rem;
   border-radius: 20px;
-  box-shadow: var(--card-shadow);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid var(--glass-border);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
   position: relative;
   overflow: hidden;
 }
@@ -251,10 +371,12 @@ section h2 {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: var(--primary-gradient);
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-pink), var(--neon-green));
+  background-size: 400% 400%;
   border-radius: 22px;
   z-index: -1;
   opacity: 0;
+  animation: borderRainbow 3s ease infinite;
   transition: opacity 0.3s ease;
 }
 
@@ -262,117 +384,148 @@ section h2 {
   opacity: 1;
 }
 
-.card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: var(--hover-shadow);
-  background: rgba(255, 255, 255, 0.3);
-  color: white;
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
 }
 
-/* Publications List */
+.card:hover::after {
+  left: 100%;
+}
+
+.card:hover {
+  transform: translateY(-15px) rotateX(5deg);
+  box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes borderRainbow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Publications 列表重新設計 */
 #publications ul {
   list-style: none;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 #publications ul li {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  margin: 1rem 0;
-  padding: 1.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  margin: 1.5rem 0;
+  padding: 2rem;
   border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.95);
-  transition: all 0.3s ease;
-  box-shadow: var(--card-shadow);
+  border: 1px solid var(--glass-border);
+  font-size: 1.2rem;
+  color: #ffffff;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#publications ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+  transition: width 0.4s ease;
+}
+
+#publications ul li:hover::before {
+  width: 5px;
 }
 
 #publications ul li:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateX(10px);
-  box-shadow: var(--hover-shadow);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(15px);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
 }
 
 /* About Section */
-#about {
-  text-align: center;
-}
-
 #about p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: rgba(255, 255, 255, 0.9);
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(15px);
-  padding: 2rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: var(--card-shadow);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  padding: 3rem;
+  border-radius: 25px;
+  border: 1px solid var(--glass-border);
+  text-align: center;
+  line-height: 1.8;
 }
 
-/* Contact Form */
+/* 表單重新設計 */
 form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   max-width: 600px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  padding: 2.5rem;
-  border-radius: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: var(--card-shadow);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  padding: 3rem;
+  border-radius: 30px;
+  border: 1px solid var(--glass-border);
 }
 
 input, textarea {
-  padding: 1rem 1.5rem;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 1.2rem 1.5rem;
+  border: 2px solid var(--glass-border);
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
   font-size: 1rem;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
 }
 
 input::placeholder, textarea::placeholder {
-  color: rgba(0,0,0,0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 input:focus, textarea:focus {
   outline: none;
-  border: 2px solid transparent;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.3);
-  transform: translateY(-2px);
+  border: 2px solid var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 form button {
-  background: var(--primary-gradient);
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
   color: white;
   border: none;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2rem;
   border-radius: 25px;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
 }
 
 form button:hover {
   transform: translateY(-3px);
-  box-shadow: var(--hover-shadow);
+  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.6);
+  background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
 }
 
 #contact small {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.6);
   text-align: center;
   margin-top: 1rem;
-  font-size: 0.9rem;
 }
 
 /* 響應式設計 */
@@ -386,56 +539,21 @@ form button:hover {
   nav ul {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
-  }
-  
-  #home h2 {
-    font-size: 2.5rem;
   }
   
   section h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+  
+  #home h2 {
+    font-size: 3rem;
   }
   
   .cards {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
   
   section {
-    padding: 2rem 1rem;
+    padding: 4rem 1rem 2rem;
   }
-  
-  #home {
-    padding: 4rem 1rem;
-    margin: 1rem;
-  }
-}
-
-/* 載入動畫 */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-section {
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-/* 滾動時的淡入效果 */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
