@@ -3,65 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BioPharmLab</title>
+  <meta name="description" content="BioPharmLab - Advancing pharmaceutical innovation and biochemical engineering to shape a healthier future through cutting-edge research and development." />
+  <meta name="keywords" content="biopharm, pharmaceutical, biotechnology, biochemical engineering, drug discovery, green synthesis, biochip, exosome" />
+  <meta name="author" content="BioPharmLab" />
+  
+  <!-- Open Graph meta tags -->
+  <meta property="og:title" content="BioPharmLab - Pharmaceutical Innovation" />
+  <meta property="og:description" content="Advancing pharmaceutical innovation and biochemical engineering to shape a healthier future" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://biopharmlab.com" />
+  
+  <!-- Twitter Card meta tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BioPharmLab - Pharmaceutical Innovation" />
+  <meta name="twitter:description" content="Advancing pharmaceutical innovation and biochemical engineering to shape a healthier future" />
+  
+  <title>BioPharmLab - Pharmaceutical Innovation & Biochemical Engineering</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-  <header>
-    <nav>
+  <header role="banner">
+    <nav role="navigation" aria-label="Main navigation">
       <h1>BioPharmLab</h1>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><button id="darkToggle">🌙</button></li>
+        <li><a href="#home" aria-label="Go to home section">Home</a></li>
+        <li><a href="#research" aria-label="Go to research section">Research</a></li>
+        <li><a href="#publications" aria-label="Go to publications section">Publications</a></li>
+        <li><a href="#about" aria-label="Go to about section">About</a></li>
+        <li><a href="#contact" aria-label="Go to contact section">Contact</a></li>
+        <li><button id="darkToggle" aria-label="Toggle dark mode" title="Switch between light and dark themes">🌙</button></li>
       </ul>
     </nav>
   </header>
 
-  <section id="home">
-    <h2>Welcome to BioPharmLab</h2>
-    <p>Advancing pharmaceutical innovation and biochemical engineering to shape a healthier future</p>
-    <button>Explore Our Research</button>
-  </section>
+  <main>
+    <section id="home" aria-labelledby="home-heading">
+      <h2 id="home-heading">Welcome to BioPharmLab</h2>
+      <p>Advancing pharmaceutical innovation and biochemical engineering to shape a healthier future</p>
+      <button type="button" aria-label="Explore our research areas">Explore Our Research</button>
+    </section>
 
-  <section id="research">
-    <h2>Research Areas</h2>
-    <div class="cards">
-      <div class="card">💊 Drug Discovery and Development</div>
-      <div class="card">🧬 Biotechnology</div>
-      <div class="card">⚗️ Green Synthesis</div>
-      <div class="card">🧠 Biochip & Exosome</div>
-    </div>
-  </section>
+    <section id="research" aria-labelledby="research-heading">
+      <h2 id="research-heading">Research Areas</h2>
+      <div class="cards" role="group" aria-label="Research areas">
+        <div class="card" role="article" tabindex="0">
+          <span aria-hidden="true">💊</span> Drug Discovery and Development
+        </div>
+        <div class="card" role="article" tabindex="0">
+          <span aria-hidden="true">🧬</span> Biotechnology
+        </div>
+        <div class="card" role="article" tabindex="0">
+          <span aria-hidden="true">⚗️</span> Green Synthesis
+        </div>
+        <div class="card" role="article" tabindex="0">
+          <span aria-hidden="true">🧠</span> Biochip & Exosome
+        </div>
+      </div>
+    </section>
 
-  <section id="publications">
-    <h2>Latest Publications</h2>
-    <ul>
-      <li>🦠 Discovery of Novel Antibacterial Molecules</li>
-      <li>🧬 Enhanced Protein Yield in Cell Factories</li>
-      <li>⚗️ Patented Green Synthesis Catalyst</li>
-      <li>🧠 Biochip-Driven Neural Interface</li>
-    </ul>
-  </section>
+    <section id="publications" aria-labelledby="publications-heading">
+      <h2 id="publications-heading">Latest Publications</h2>
+      <ul role="list" aria-label="Recent research publications">
+        <li><span aria-hidden="true">🦠</span> Discovery of Novel Antibacterial Molecules</li>
+        <li><span aria-hidden="true">🧬</span> Enhanced Protein Yield in Cell Factories</li>
+        <li><span aria-hidden="true">⚗️</span> Patented Green Synthesis Catalyst</li>
+        <li><span aria-hidden="true">🧠</span> Biochip-Driven Neural Interface</li>
+      </ul>
+    </section>
 
-  <section id="about">
-    <h2>Our Team</h2>
-    <p>BioPharmLab is composed of interdisciplinary experts in pharmacy, biotechnology, and biochemical engineering...</p>
-  </section>
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">Our Team</h2>
+      <p>BioPharmLab is composed of interdisciplinary experts in pharmacy, biotechnology, and biochemical engineering working together to advance the frontiers of pharmaceutical science and create innovative solutions for global health challenges.</p>
+    </section>
 
-  <section id="contact">
-    <h2>Join Us</h2>
-    <form>
-      <input type="text" placeholder="Your name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your message"></textarea>
-      <button type="submit">Submit</button>
-    </form>
-    <small>本網站使用 Google reCAPTCHA 保護安全，並遵守隱私權政策與使用條款。</small>
-  </section>
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Join Us</h2>
+      <form novalidate aria-labelledby="contact-heading">
+        <label for="name" class="sr-only">Your name</label>
+        <input 
+          type="text" 
+          id="name"
+          name="name"
+          placeholder="Your name" 
+          required 
+          aria-required="true"
+          aria-describedby="name-error"
+          autocomplete="name"
+        />
+        
+        <label for="email" class="sr-only">Your email address</label>
+        <input 
+          type="email" 
+          id="email"
+          name="email"
+          placeholder="Your Email" 
+          required 
+          aria-required="true"
+          aria-describedby="email-error"
+          autocomplete="email"
+        />
+        
+        <label for="message" class="sr-only">Your message</label>
+        <textarea 
+          id="message"
+          name="message"
+          placeholder="Your message"
+          aria-describedby="message-error"
+          rows="5"
+        ></textarea>
+        
+        <button type="submit" aria-describedby="form-status">Submit</button>
+        <div id="form-status" aria-live="polite" aria-atomic="true"></div>
+      </form>
+      <small>本網站使用 Google reCAPTCHA 保護安全，並遵守隱私權政策與使用條款。</small>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
